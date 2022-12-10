@@ -9,5 +9,6 @@ public interface IServiceStock {
     Stock addStock(Stock s);
     Stock updateStock(Stock u);
     Stock retrieveStock(Long id);
+    String retrieveStatusStock();
 
 }

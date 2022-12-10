@@ -26,10 +26,12 @@ public class StockController {
     public Stock UpdateStock(@RequestBody Stock stock){
         return serviceStock.updateStock(stock);
     }
-
-
     @GetMapping("{idStock}")
     public Stock GetStock(@PathVariable Long idStock){
         return serviceStock.retrieveStock(idStock);
     }
-}
+    @GetMapping ("/ListProduits")
+    public String retrieveStatusStock() {
+        return serviceStock.retrieveStatusStock();
+    }
+    }

@@ -1,5 +1,6 @@
 package tn.esprit.gestionmagasinsk.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,8 @@ public class Facture implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateFacture;
     private Boolean active;
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Client client;
     @OneToMany(mappedBy = "facture")
     private List<DetailFacture> detailFactureList;

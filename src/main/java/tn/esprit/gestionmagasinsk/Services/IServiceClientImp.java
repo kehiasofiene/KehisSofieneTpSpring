@@ -2,9 +2,11 @@ package tn.esprit.gestionmagasinsk.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tn.esprit.gestionmagasinsk.Entities.CategorieClient;
 import tn.esprit.gestionmagasinsk.Entities.Client;
 import tn.esprit.gestionmagasinsk.Repositories.IClientRepository;
 
+import java.util.Date;
 import java.util.List;
 @Service
 public class IServiceClientImp implements IServiceClient{
@@ -34,4 +36,10 @@ public class IServiceClientImp implements IServiceClient{
     public Client retrieveClient(Long id) {
         return clientRepository.findById(id).orElse(null);
     }
-}
+
+    @Override
+    public float getChiffreAffaireParCategorieClient(CategorieClient categorieClient, Date startDate, Date endDate) {
+            return clientRepository.getChiffreAffaireParCategorieClient(categorieClient,startDate,endDate);
+        };
+    }
+

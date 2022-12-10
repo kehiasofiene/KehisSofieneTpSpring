@@ -9,6 +9,7 @@ import tn.esprit.gestionmagasinsk.Repositories.IProduitRepository;
 import tn.esprit.gestionmagasinsk.Repositories.IRayonRepository;
 import tn.esprit.gestionmagasinsk.Repositories.IStockRepository;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -47,7 +48,14 @@ public class IServiceProduitImp implements IServiceProduit {
 
         if(produit!=null && s!=null){
             produit.setStock(s);
+
         }
         produitRepository.save(produit);
-        ;}
+        }
+
+    @Override
+    public float getRevenuBrutProduit(Long idProduit, Date startDate, Date endDate) {
+        Produit produit = produitRepository.findById(idProduit).orElse(null);
+        return produitRepository.getRevenuBrutProduit(produit, startDate, endDate);
+    }
 }
